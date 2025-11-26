@@ -1,7 +1,7 @@
 # Descripción
 Bot automatizado para enviar mensajes a WhatsApp Web que soporta tanto grupos como usuarios individuales. Utiliza Selenium para automatizar la interacción con WhatsApp Web.
 
-## 🚀 Características
+## Características
 
 -  Envío automático a grupos de WhatsApp
 -  Envío automático a usuarios individuales
