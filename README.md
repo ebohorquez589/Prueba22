@@ -10,3 +10,8 @@ Bot automatizado para enviar mensajes a WhatsApp Web que soporta tanto grupos co
 -  Compatibilidad con código anterior
 -  Logging completo de operaciones
 -  Soporte para mensajes con formato 
+
+
+## Requisitos
+```bash
+pip install selenium webdriver-manager pyperclip
