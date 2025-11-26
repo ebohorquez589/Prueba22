@@ -15,3 +15,8 @@ Bot automatizado para enviar mensajes a WhatsApp Web que soporta tanto grupos co
 ## Requisitos
 ```bash
 pip install selenium webdriver-manager pyperclip
+
+### Dependencias del sistema
+
+- Google Chrome o Chromium
+- ChromeDriver (se instala automáticamente con `webdriver-manager`)
