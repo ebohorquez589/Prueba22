@@ -63,3 +63,29 @@ Construye la URL de destino final:
 - **Para individuos:**  
   `https://web.whatsapp.com/send?phone=...`
 
+## 3. Clase WhatsAppBot
+
+Esta es la clase central que contiene la lógica para automatizar la interacción con WhatsApp Web.
+
+### Propósito
+Controla el ciclo de vida del navegador (iniciar, enviar mensaje, cerrar) y utiliza la configuración de `WhatsAppConfig` y el destino de `WhatsAppDestination`.
+
+### Métodos clave
+
+#### `_initialize_driver`
+Inicializa el WebDriver de Chrome usando `Service` y las opciones configuradas.
+
+#### `enviar_mensaje`
+El método principal:
+
+- Abre la URL de destino en el navegador (`self.driver.get(destino.url)`).
+- Usa `WebDriverWait` (con timeout) y `expected_conditions (EC)` para esperar a que el cuadro de mensaje esté cargado y localizable por su **XPATH**.
+- Copia el mensaje a enviar al portapapeles (`pyperclip.copy`).
+- Pega el mensaje en el cuadro de texto usando **Ctrl+V** (`Keys.CONTROL, 'v'`), lo cual es mejor para formato y mensajes largos.
+- Presiona **Enter** (`Keys.RETURN`) para enviar el mensaje.
+
+#### `cerrar`
+Cierra el navegador usando `self.driver.quit()`.
+
+
+
