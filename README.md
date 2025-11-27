@@ -87,5 +87,42 @@ El método principal:
 #### `cerrar`
 Cierra el navegador usando `self.driver.quit()`.
 
+## 3.1 Función `enviar_mensaje_y_mantener_abierto` (de WhatsAppBot)
+
+Este método es un *wrapper* alrededor de `enviar_mensaje`.
+
+### Propósito
+Envía el mensaje y luego pausa la ejecución del script.
+
+### Comportamiento
+Mantiene la ventana del navegador abierta hasta que el usuario presione **Enter** en la terminal, lo cual es útil para verificar el envío o para mantener la sesión de WhatsApp activa después de enviar el mensaje.
+
+## 4. Función `enviar_mensaje_whatsapp_selenium`
+
+Esta función es una capa de compatibilidad o un acceso directo simple.
+
+### Propósito
+Simplificar el uso del bot para usuarios que solo necesitan enviar un mensaje rápidamente sin interactuar directamente con las clases.
+
+### Comportamiento
+Recibe los argumentos necesarios, crea internamente instancias de `WhatsAppConfig` y `WhatsAppBot`, llama a `bot.enviar_mensaje()`, y garantiza que el navegador se cierre al finalizar (`finally: bot.cerrar()`).
+
+## 5. Ejemplo de Uso (`if __name__ == "__main__":`)
+
+Este bloque demuestra cómo usar las clases del módulo.
+
+### Ejemplo 1 (Grupo)
+Muestra el proceso completo para enviar un mensaje a un enlace de grupo usando `WhatsAppBot` y `enviar_mensaje_y_mantener_abierto`.
+
+### Ejemplo 2 (Individuo)
+Muestra cómo enviar un mensaje a un número de teléfono (formato internacional) usando el mismo flujo.
+
+### Ejemplo 3 (Compatibilidad)
+Muestra el uso de la función `enviar_mensaje_whatsapp_selenium` para un envío rápido a un individuo.
+
+### Nota
+Los ejemplos 1 y 2 usan `enviar_mensaje_y_mantener_abierto()` porque permiten verificar el envío manualmente antes de cerrar el navegador.
+
+
 
 
