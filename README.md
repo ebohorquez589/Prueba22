@@ -36,3 +36,30 @@ Inicializa las rutas al binario de Chrome, al directorio de datos del usuario (p
 
 #### `get_chrome_options`
 Crea y retorna un objeto `Options` de Selenium con argumentos importantes como maximizar la ventana, deshabilitar extensiones y, crucialmente, configurar la ubicación del perfil de usuario (`user-data-dir`).
+
+## 2. Clase WhatsAppDestination
+
+Esta clase modela y prepara el destino del mensaje, ya sea un grupo o un contacto individual.
+
+### Propósito
+Recibe un identificador (enlace de grupo o número de teléfono) y determina automáticamente si es un grupo o un individuo, generando la URL específica de WhatsApp Web para iniciar el chat.
+
+### Métodos clave
+
+#### `__init__`
+Recibe el `identifier` y llama a `_detect_type()` para establecer `self.is_group`.
+
+#### `_detect_type`
+Utiliza expresiones regulares (`re`) y lógica simple para autodetectar el tipo de destino:
+- `True` si parece un enlace de grupo
+- `False` si parece un número de teléfono
+
+#### `_generate_url`
+Construye la URL de destino final:
+
+- **Para grupos:**  
+  `https://web.whatsapp.com/accept?code=...`
+
+- **Para individuos:**  
+  `https://web.whatsapp.com/send?phone=...`
+
